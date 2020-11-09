@@ -24,6 +24,22 @@
   </button>
 </div>
 
+  <ul>
+  {% for todo_items in all_items %}
+  <li>{{todo_items.content}}
+    <form action="/deleteTodo/{{todo_items.id}}/"
+    style = "display:inline;"
+     method="POST">{% csrf_token %}
+      <input type="submit" value="Delete"/>
+  </form>
+  </li>
+  {% endfor %}</ul>
+
+  <form action="/addTodo/" method="POST">{% csrf_token %}
+      <input type="text" name="content"/>
+      <input type="submit" value="add"/>
+  </form>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
